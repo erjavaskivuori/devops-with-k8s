@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output-app
+  template:
+    metadata:
+      labels:
+        app: log-output-app
+    spec:
+      containers:
+        - name: log-output-app
+          image: erjav/log-output-app@sha256:a9581bf5995752d288093aeea5501a551b2620ee1715d6f0cfc601cfd0b94e92
+          imagePullPolicy: IfNotPresent
