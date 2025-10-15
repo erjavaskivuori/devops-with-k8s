@@ -7,3 +7,4 @@ This repository includes the exercise submissions for the DevOps with Kubernetes
 ### Chapter 2
 - [1.1](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.1/LogOutput)
 - [1.2](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.2/TodoApp)
+- [1.3](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.3/LogOutput)
