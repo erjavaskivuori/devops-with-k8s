@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todoapp
+  template:
+    metadata:
+      labels:
+        app: todoapp
+    spec:
+      containers:
+        - name: todoapp
+          image: erjav/todoapp@sha256:d0e538be5167865be37047e2ea30c4fa214e6422bb851906fac2f27435f57939
+          imagePullPolicy: IfNotPresent

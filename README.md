@@ -1,5 +1,6 @@
-# devops-with-k8s
-Exercise submissions for DevOps with Kubernetes course at the University of Helsinki.
+# DevOps with Kubernetes
+
+This repository includes the exercise submissions for the DevOps with Kubernetes course at the University of Helsinki.
 
 ## Exercises
 
