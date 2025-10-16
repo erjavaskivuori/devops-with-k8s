@@ -14,16 +14,19 @@ spec:
     spec:
       volumes:
         - name: shared-logs
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: logs-claim
       containers:
         - name: log-outputter
           image: erjav/log-outputter@sha256:1ee4d05d11a317dd802931d89dfdc326cb5fd95ec9f1ccd7a022d0b2967e8159
           imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 0
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
         - name: log-reader
-          image: erjav/log-reader@sha256:ed2fe9ff664b1f1f5acfcfd443f41b8991333442092e126bf37b428c6c611668
+          image: erjav/log-reader@sha256:ffe3c5ceeede117b7da337b2ba6a1c4e4d89ad4697e4b4849c56748abb8ba283
           imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: shared-logs

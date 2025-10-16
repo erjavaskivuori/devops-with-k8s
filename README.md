@@ -15,3 +15,4 @@ This repository includes the exercise submissions for the DevOps with Kubernetes
 - [1.8](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.8/TodoApp)
 - [1.9](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.9/PingPong)
 - [1.10](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.10/LogOutput)
+- [1.11](https://github.com/erjavaskivuori/devops-with-k8s/tree/1.11/LogOutput)

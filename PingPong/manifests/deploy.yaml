@@ -13,6 +13,15 @@ spec:
         app: pingpong
     spec:
       containers:
-        - name: pingpong
-          image: erjav/pingpong@sha256:32893829cdd6d10eef8b1d893d93af19794ad839b79ea79f223cbd5c65e4032a
-          imagePullPolicy: IfNotPresent
+      - name: pingpong
+        image: erjav/pingpong@sha256:8a185102af73e53c25df14455586203978141175250af43b6a2e6c04941c3543
+        imagePullPolicy: IfNotPresent
+        securityContext:
+            runAsUser: 0
+        volumeMounts:
+        - name: shared-logs
+          mountPath: /usr/src/app/files
+      volumes:
+      - name: shared-logs
+        persistentVolumeClaim:
+          claimName: logs-claim

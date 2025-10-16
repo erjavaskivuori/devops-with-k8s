@@ -5,15 +5,20 @@ import path from 'path';
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-const filePath = path.join('/', 'usr', 'src', 'app', 'files', 'log-output.txt');
+const logFilePath = path.join('/', 'usr', 'src', 'app', 'files', 'log-output.txt');
+const pongFilePath = path.join('/', 'usr', 'src', 'app', 'files', 'pingpong.txt');
 
 app.get('/', (req, res) => {
   try {
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).send('<h1>Log file not found</h1>');
+    let logContent = 'No logs yet';
+    if (fs.existsSync(logFilePath)) {
+      logContent = fs.readFileSync(logFilePath, 'utf8');
     }
 
-    const logContent = fs.readFileSync(filePath, 'utf8');
+    let pongContent = '0';
+    if (fs.existsSync(pongFilePath)) {
+      pongContent = fs.readFileSync(pongFilePath, 'utf8').trim();
+    }
 
     res.send(`
       <html>
@@ -23,6 +28,7 @@ app.get('/', (req, res) => {
         <body>
           <h1>Log Output</h1>
           <pre>${logContent}</pre>
+          <p>Ping / Pongs: ${pongContent}</p>
         </body>
       </html>
     `);
