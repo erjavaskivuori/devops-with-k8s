@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingpong
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      containers:
+        - name: pingpong
+          image: erjav/pingpong@sha256:32893829cdd6d10eef8b1d893d93af19794ad839b79ea79f223cbd5c65e4032a
+          imagePullPolicy: IfNotPresent
