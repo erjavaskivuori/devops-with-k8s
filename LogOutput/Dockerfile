@@ -1,12 +1,15 @@
-# Build and publish a release
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-WORKDIR /app
-COPY . .
-RUN dotnet restore
-RUN dotnet publish -o out
+FROM node:24-slim
 
-# Build the runtime image
-FROM mcr.microsoft.com/dotnet/runtime:9.0
-WORKDIR /app
-COPY --from=build /app/out .
-ENTRYPOINT ["dotnet", "LogOutput.dll"]
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm ci
+
+COPY --chown=node:node . .
+
+ENV DEBUG=todoapp:*
+
+USER node
+
+CMD ["npm", "run", "start"]

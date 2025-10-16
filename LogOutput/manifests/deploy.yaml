@@ -14,5 +14,5 @@ spec:
     spec:
       containers:
         - name: log-output-app
-          image: erjav/log-output-app@sha256:a9581bf5995752d288093aeea5501a551b2620ee1715d6f0cfc601cfd0b94e92
+          image: erjav/log-output-app@sha256:1fab007477e5dd61cbf94331bfa6ad1e1ca5ce47e313de4659be41ab3fa2fe98
           imagePullPolicy: IfNotPresent
