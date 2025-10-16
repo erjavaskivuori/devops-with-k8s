@@ -6,5 +6,9 @@ To deploy the application run:
 kubectl apply -f manifests
 ```
 
-(I didn't realize I shouldn't have used the manifests for the first release of
-the app as I was already familiar with them. So added just README for exercise 1.4)
+To use port-forwarding to access the app in http://localhost:3000/
+
+```bash
+kubectl kubectl port-forward todoapp 3000:3000
+```
+Replace the name of the pod and used port for you own values.

@@ -14,5 +14,5 @@ spec:
     spec:
       containers:
         - name: todoapp
-          image: erjav/todoapp@sha256:d0e538be5167865be37047e2ea30c4fa214e6422bb851906fac2f27435f57939
+          image: erjav/todoapp@sha256:17e80afba169d5f52d5cc34ea306b9f87cf4a417e8057268c1a2f4681323e92a
           imagePullPolicy: IfNotPresent
