@@ -1,18 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: log-output-app
+  name: logs-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: log-output-app
+      app: logs
   template:
     metadata:
       labels:
-        app: log-output-app
+        app: logs
     spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
       containers:
-        - name: log-output-app
-          image: erjav/log-output-app@sha256:1fab007477e5dd61cbf94331bfa6ad1e1ca5ce47e313de4659be41ab3fa2fe98
+        - name: log-outputter
+          image: erjav/log-outputter@sha256:1ee4d05d11a317dd802931d89dfdc326cb5fd95ec9f1ccd7a022d0b2967e8159
           imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
+        - name: log-reader
+          image: erjav/log-reader@sha256:ed2fe9ff664b1f1f5acfcfd443f41b8991333442092e126bf37b428c6c611668
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /usr/src/app/files
